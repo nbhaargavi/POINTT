@@ -34,7 +34,8 @@ public class credit implements Cloneable {
         }
     }
 
-    public static void main(String[] args) throws CloneNotSupportedException{
+    public static void main(String[] args)
+    {
         Scanner sc=new Scanner(System.in);
         System.out.println("Enter the credit card holder name:");
         String cname = sc.next();
