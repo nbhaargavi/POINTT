@@ -1,35 +1,29 @@
 package org.example;
 import java.util.Scanner;
-public class Point {
-    private int x;
-    private int y;
-    public Point( int x, int y) {
+public class Point implements Cloneable {
+    private Integer x;
+    private Integer y;
+    public Point( Integer x, Integer y) {
         this.x = x;
         this.y = y;
     }
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Point pt = (Point) o;
-        return x == pt.x &&
-                y == pt.y;
+    void eq()
+    {
+        System.out.println(x.equals(y));
     }
-    public Point clone() {
-        return new Point(x, y);
+    protected Object Clone() throws  CloneNotSupportedException
+    {
+        return super.clone();
     }
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws CloneNotSupportedException{
         Scanner sc=new Scanner(System.in);
         System.out.println("enter the x coordinate:");
-        int x = sc.nextInt();
+        Integer x = sc.nextInt();
         System.out.println("enter the y coordinate:");
-        int y = sc.nextInt();
+        Integer y = sc.nextInt();
         Point p1=new Point(x,y);
-        Point p2=p1.clone();
-        System.out.println("The cloned coordinates are "+p2.x+" and "+p2.y);
-        System.out.println("The two points "+p1.x+" and "+p1.y+" are "+p1.equals(p2));
+        Point p2=(Point)p1.clone();
+        p2.eq();
     }
 }
