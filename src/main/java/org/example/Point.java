@@ -1,29 +1,46 @@
 package org.example;
 import java.util.Scanner;
+import java.util.logging.*;
 public class Point implements Cloneable {
+    Logger l=Logger.getLogger("kitty");
     private Integer x;
     private Integer y;
     public Point( Integer x, Integer y) {
         this.x = x;
         this.y = y;
     }
-    void eq()
+    boolean eq()
     {
-        System.out.println(x.equals(y));
+        return x.equals(y);
     }
-    protected Object Clone() throws  CloneNotSupportedException
+    Point pt()
     {
-        return super.clone();
+        try
+        {
+            return(Point)super.clone();
+        }
+        catch(CloneNotSupportedException e)
+        {
+            l.info("clone error");
+            return this;
+        }
     }
-
     public static void main(String[] args) throws CloneNotSupportedException{
+        Logger l=Logger.getLogger("kitty");
         Scanner sc=new Scanner(System.in);
-        System.out.println("enter the x coordinate:");
+        l.info("enter the x coordinate:");
         Integer x = sc.nextInt();
-        System.out.println("enter the y coordinate:");
+        l.info("enter the y coordinate:");
         Integer y = sc.nextInt();
         Point p1=new Point(x,y);
         Point p2=(Point)p1.clone();
         p2.eq();
+        if (p2.eq())
+        {
+            l.info("x and y are same");
+        }
+        else {
+            l.info("x and y are not same");
+        }
     }
 }
