@@ -1,7 +1,7 @@
 package org.example;
 import java.util.Scanner;
 import java.util.logging.*;
-public class Point implements cloneable {
+public class Point implements Cloneable {
     Logger l=Logger.getLogger("kitty");
     private Integer x;
     private Integer y;
@@ -33,7 +33,7 @@ public class Point implements cloneable {
         l.info("enter the y coordinate:");
         Integer y = sc.nextInt();
         Point p1=new Point(x,y);
-        Point p2=(Point)p1.clone();
+        Point p2=p1.pt();
         p2.eq();
         if (p2.eq())
         {
